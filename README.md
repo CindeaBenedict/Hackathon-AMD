@@ -85,3 +85,4 @@ See `data/finetune/sample.train.jsonl` — train adapters on **diagnostic style an
 ## Lab Professor Mode
 
 Custom teacher voice is **opt-in only** with explicit written consent (see footer in the web UI).
+# Hackathon-AMD
