@@ -1,0 +1,31 @@
+# ProbePilot — reproducible API + web UI
+# Usage (from repo root):
+#   docker compose up --build
+#
+# API: http://127.0.0.1:8000   Web: http://127.0.0.1:3000
+# KiCad plugin: set PROBEPILOT_API_URL=http://127.0.0.1:8000 on the host.
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: probepilot-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      RAG_DATA_DIR: /app/data/rag
+      CORS_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000,http://web:3000"
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        # URL must be reachable from the *browser* on your machine (published API port).
+        NEXT_PUBLIC_API_URL: http://127.0.0.1:8000
+    image: probepilot-web:local
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api

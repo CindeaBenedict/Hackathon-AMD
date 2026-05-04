@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: probepilot-config
+  namespace: probepilot
+data:
+  # Comma-separated browser origins allowed to call the API (CORS).
+  # Replace with your real app URL(s), e.g. https://probepilot.example.com
+  CORS_ORIGINS: "https://REPLACE_WITH_INGRESS_HOST,http://localhost:3000"
