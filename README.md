@@ -21,11 +21,11 @@ Schematic-heavy flows can still use **SPICE / netlist export** (or `kicad-cli` o
 | Bench / speed | C++ (`cpp/`) | SCPI, CSV parse, safety-critical paths; expose via pybind11 / gRPC / ZMQ / REST |
 | GPU | ROCm, PyTorch, HF, Optimum-AMD, vLLM, QLoRA | See `docs/AMD_GPU.md` |
 
-**Agent loop (target):** Observe ? Reason ? Retrieve ? Simulate ? Measure ? Diagnose ? Act. The Python agent implements a **demo LED / base-drive scenario** plus generic retrieve + SPICE-stub comparison.
+**Agent loop (target):** Observe -> Reason -> Retrieve -> Simulate -> Measure -> Diagnose -> Act. The Python agent implements a **demo LED / base-drive scenario** plus generic retrieve + SPICE-stub comparison.
 
 **Safety:** Models never touch hardware directly. Commands go through **Pydantic parsing** and **`validate_tool_call`** before execution; risky paths require **human confirmation**.
 
-## Docker (recommended for ìdonít break my machineî)
+## Docker (recommended for not breaking your machine)
 
 From the repo root (requires [Docker](https://docs.docker.com/get-docker/) + Compose v2):
 
@@ -80,11 +80,8 @@ git push -u origin main
 
 ## Fine-tuning data shape
 
-See `data/finetune/sample.train.jsonl` ù train adapters on **diagnostic style and tool JSON**, not raw textbooks (facts stay in RAG).
+See `data/finetune/sample.train.jsonl` ó train adapters on **diagnostic style and tool JSON**, not raw textbooks (facts stay in RAG).
 
 ## Lab Professor Mode
 
 Custom teacher voice is **opt-in only** with explicit written consent (see footer in the web UI).
-# Hackathon-AMD
-# Hackathon-AMD
-# Hackathon-AMD
